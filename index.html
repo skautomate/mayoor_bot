@@ -382,13 +382,12 @@
         );
         if (typingMsg) typingMsg.parentElement.remove();
 
-   addMessage(reply, "bot");
-userInput.disabled = false;
-
-// Prevent auto-focus on mobile devices to avoid opening keyboard
-if (!/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-  userInput.focus();
-}
+        addMessage(reply, "bot");
+        userInput.disabled = false;
+        if (!/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+          userInput.focus();
+        }
+      }
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
