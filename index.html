@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mayoor Booking Assistant Chatbot</title>
+    <title>Mayoor School Booking Assistant Chatbot</title>
     <style>
       * {
         box-sizing: border-box;
@@ -52,7 +52,6 @@
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         flex-shrink: 0;
       }
-
       #messages {
         flex: 1 1 auto;
         padding: 20px 30px 15px;
@@ -60,8 +59,29 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
-        background: #fff;
+        background: #fff; /* Just white background here */
         scroll-behavior: smooth;
+        position: relative; /* Required for pseudo-element positioning */
+      }
+
+      #messages::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://res.cloudinary.com/dp3v735fo/image/upload/v1754685825/313107938_101934416059627_6900130765850729637_n-removebg-preview_ukjx3v.png")
+          no-repeat center center;
+        background-size: 400px;
+        opacity: 0.1; /* Fades just the logo */
+        pointer-events: none; /* Makes sure clicks scroll work normally */
+        z-index: 0;
+      }
+
+      #messages > * {
+        position: relative;
+        z-index: 1; /* Ensures chat messages appear above the logo */
       }
 
       #messages::-webkit-scrollbar {
@@ -262,9 +282,9 @@
     <div
       id="chat-container"
       role="region"
-      aria-label="Mayoor Booking Assistant Chatbot"
+      aria-label="Mayoor School Booking Assistant Chatbot"
     >
-      <div id="chat-header">Mayoor Booking Assistant</div>
+      <div id="chat-header">Mayoor Smart Booker</div>
       <div id="messages" aria-live="polite" aria-relevant="additions"></div>
 
       <div id="quick-replies" aria-label="Quick reply options">
