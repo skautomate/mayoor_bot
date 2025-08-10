@@ -399,6 +399,46 @@
           padding: 8px 14px;
           font-size: 0.9rem;
         }
+        .bot-profile {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .bot-header-avatar {
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 2px solid white;
+        }
+
+        .bot-info {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .bot-name {
+          font-size: 1.1rem;
+          font-weight: 600;
+        }
+
+        .bot-status {
+          font-size: 0.85rem;
+          font-weight: 200;
+          color: #ffffff; /* Light green for text */
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .status-dot {
+          width: 8px;
+          height: 8px;
+          background-color: #4caf50; /* Green dot */
+          border-radius: 50%;
+          display: inline-block;
+        }
       }
     </style>
   </head>
@@ -412,11 +452,8 @@
           class="logo-img"
         />
         <div>
-          <h1>Mayoor School Smart Booker</h1>
-          <p>
-            Your friendly AI assistant for booking school facilities, including
-            the MP-Hall and Amphitheatre.
-          </p>
+          <h1>Mayoor School Venue Booking Assistant</h1>
+          <p>Fast, easy, and smart booking for MP-Hall & Amphitheatre.</p>
         </div>
       </div>
 
@@ -468,7 +505,21 @@
           role="region"
           aria-label="Mayoor School Booking Assistant Chatbot"
         >
-          <div id="chat-header">Mayoor School Smart Booker</div>
+          <div id="chat-header">
+            <div class="bot-profile">
+              <img
+                src="https://i.postimg.cc/d0mxJzCF/download-7.jpg"
+                alt="Bot Profile"
+                class="bot-header-avatar"
+              />
+              <div class="bot-info">
+                <div class="bot-name">Mayoor Booking Assistant</div>
+                <div class="bot-status">
+                  <span class="status-dot"></span> Online
+                </div>
+              </div>
+            </div>
+          </div>
           <div id="messages" aria-live="polite" aria-relevant="additions"></div>
 
           <div id="quick-replies" aria-label="Quick reply options">
