@@ -37,7 +37,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 100vh; /* Set a fixed height for the main layout */
+        height: 100vh;
         width: 100%;
         max-width: 1200px;
         margin: auto;
@@ -83,8 +83,8 @@
         width: 100%;
         justify-content: center;
         gap: 30px;
-        flex-grow: 1; /* Allow this container to fill remaining vertical space */
-        min-height: 0; /* Prevents children from forcing the container to grow */
+        flex-grow: 1;
+        min-height: 0;
       }
 
       #chat-container {
@@ -98,7 +98,7 @@
         overflow: hidden;
         border: 1px solid #ddd;
         flex-shrink: 0;
-        height: 100%; /* Take up the full height of its flexible parent */
+        height: 100%;
       }
 
       #chat-header {
@@ -107,7 +107,7 @@
         padding: 18px 25px;
         font-weight: 700;
         font-size: 1.6rem;
-        text-align: center;
+        text-align: left; /* Changed to left */
         user-select: none;
         letter-spacing: 1.2px;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -115,13 +115,13 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        justify-content: flex-start;
+        justify-content: flex-start; /* Ensures content is left-aligned */
       }
 
       #messages {
-        flex: 1 1 auto; /* This is correct, it will grow and scroll within the parent */
+        flex: 1 1 auto;
         padding: 20px 30px 15px;
-        overflow-y: auto; /* This enables the scrollbar */
+        overflow-y: auto;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -332,6 +332,7 @@
       @media (max-width: 992px) {
         .main-layout {
           gap: 15px;
+          height: auto;
         }
 
         .header-area {
@@ -377,6 +378,7 @@
 
         #chat-header {
           padding: 14px 16px;
+          font-size: 1.2rem; /* Adjusted for smaller screens */
         }
 
         #messages {
