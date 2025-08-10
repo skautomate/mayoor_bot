@@ -37,7 +37,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 100%;
+        height: 100vh; /* Set a fixed height for the main layout */
         width: 100%;
         max-width: 1200px;
         margin: auto;
@@ -83,13 +83,13 @@
         width: 100%;
         justify-content: center;
         gap: 30px;
-        flex-grow: 1;
+        flex-grow: 1; /* Allow this container to fill remaining vertical space */
+        min-height: 0; /* Prevents children from forcing the container to grow */
       }
 
       #chat-container {
         display: flex;
         flex-direction: column;
-        height: 100%;
         width: 500px;
         background: #fff;
         border-radius: 20px;
@@ -98,6 +98,7 @@
         overflow: hidden;
         border: 1px solid #ddd;
         flex-shrink: 0;
+        height: 100%; /* Take up the full height of its flexible parent */
       }
 
       #chat-header {
@@ -118,9 +119,9 @@
       }
 
       #messages {
-        flex: 1 1 auto;
+        flex: 1 1 auto; /* This is correct, it will grow and scroll within the parent */
         padding: 20px 30px 15px;
-        overflow-y: auto;
+        overflow-y: auto; /* This enables the scrollbar */
         display: flex;
         flex-direction: column;
         gap: 16px;
