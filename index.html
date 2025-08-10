@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Mayoor School Booking Assistant Chatbot</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
       * {
         box-sizing: border-box;
@@ -25,19 +33,71 @@
         padding: 15px;
       }
 
+      .main-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        gap: 30px;
+        padding: 15px;
+      }
+
+      .header-area {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        padding-bottom: 20px;
+      }
+
+      .header-area .logo-img {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 80px;
+        max-width: 240px;
+      }
+
+      .header-area h1 {
+        font-size: 2.5rem;
+        color: #004aad;
+        margin: 0;
+        line-height: 1.2;
+      }
+
+      .header-area p {
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .chat-and-instructions {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        gap: 30px;
+        flex-grow: 1;
+      }
+
       #chat-container {
         display: flex;
         flex-direction: column;
         height: 100%;
-        max-height: 100%;
-        width: 100%;
-        max-width: 900px;
+        width: 500px;
         background: #fff;
         border-radius: 20px;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12),
           0 10px 10px rgba(0, 0, 0, 0.08);
         overflow: hidden;
         border: 1px solid #ddd;
+        flex-shrink: 0;
       }
 
       #chat-header {
@@ -52,6 +112,7 @@
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         flex-shrink: 0;
       }
+
       #messages {
         flex: 1 1 auto;
         padding: 20px 30px 15px;
@@ -59,9 +120,9 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
-        background: #fff; /* Just white background here */
+        background: #fff;
         scroll-behavior: smooth;
-        position: relative; /* Required for pseudo-element positioning */
+        position: relative;
       }
 
       #messages::before {
@@ -74,14 +135,14 @@
         background: url("https://res.cloudinary.com/dp3v735fo/image/upload/v1754685825/313107938_101934416059627_6900130765850729637_n-removebg-preview_ukjx3v.png")
           no-repeat center center;
         background-size: 400px;
-        opacity: 0.1; /* Fades just the logo */
-        pointer-events: none; /* Makes sure clicks scroll work normally */
+        opacity: 0.1;
+        pointer-events: none;
         z-index: 0;
       }
 
       #messages > * {
         position: relative;
-        z-index: 1; /* Ensures chat messages appear above the logo */
+        z-index: 1;
       }
 
       #messages::-webkit-scrollbar {
@@ -236,11 +297,74 @@
         background: #1e90ff;
       }
 
-      @media (max-width: 600px) {
+      .how-to-use-bot {
+        width: 500px;
+        padding: 20px;
+        background: #e9eff7;
+        border-radius: 20px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.05),
+          0 10px 10px rgba(0, 0, 0, 0.03);
+      }
+      .how-to-use-bot h2 {
+        color: #004aad;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+      .how-to-use-bot p {
+        color: #333;
+        font-size: 1rem;
+      }
+      .how-to-use-bot ol {
+        margin-top: 15px;
+        padding-left: 20px;
+      }
+      .how-to-use-bot li {
+        margin-bottom: 8px;
+        font-size: 1rem;
+        color: #333;
+      }
+
+      @media (max-width: 992px) {
+        .main-layout {
+          gap: 15px;
+        }
+
+        .header-area {
+          flex-direction: column;
+          padding-bottom: 10px;
+          gap: 10px;
+        }
+
+        .header-area .logo-img {
+          position: static;
+          transform: none;
+          height: 40px;
+          margin-bottom: 10px;
+        }
+
+        .chat-and-instructions {
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+        }
+
+        #chat-container {
+          height: 80vh;
+          width: 100%;
+          max-width: 500px;
+        }
+
+        .how-to-use-bot {
+          width: 100%;
+          max-width: 500px;
+        }
+
         body {
           padding: 0;
         }
+      }
 
+      @media (max-width: 600px) {
         #chat-container {
           border-radius: 0;
           height: 100vh;
@@ -278,50 +402,112 @@
       }
     </style>
   </head>
-  <body>
-    <div
-      id="chat-container"
-      role="region"
-      aria-label="Mayoor School Booking Assistant Chatbot"
-    >
-      <div id="chat-header">Mayoor Smart Booker</div>
-      <div id="messages" aria-live="polite" aria-relevant="additions"></div>
 
-      <div id="quick-replies" aria-label="Quick reply options">
-        <button class="quick-btn" data-msg="I want to book MP-Hall">
-          MP-Hall
-        </button>
-        <button class="quick-btn" data-msg="I want to book Amphitheatre">
-          Amphitheatre
-        </button>
+  <body>
+    <div class="main-layout">
+      <div class="header-area">
+        <img
+          src="https://res.cloudinary.com/dp3v735fo/image/upload/v1754685825/313107938_101934416059627_6900130765850729637_n-removebg-preview_ukjx3v.png"
+          alt="Mayoor School Logo"
+          class="logo-img"
+        />
+        <div>
+          <h1>Mayoor School Smart Booker</h1>
+          <p>
+            Your friendly AI assistant for booking school facilities, including
+            the MP-Hall and Amphitheatre.
+          </p>
+        </div>
       </div>
 
-      <form id="input-area" aria-label="Send message form">
-        <input
-          type="text"
-          id="userInput"
-          placeholder="Type your message..."
-          autocomplete="off"
-          required
-        />
-        <button type="submit" title="Send">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="feather feather-send"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-          >
-            <line x1="22" y1="2" x2="11" y2="13"></line>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-          </svg>
-        </button>
-      </form>
+      <div class="chat-and-instructions">
+        <div class="how-to-use-bot">
+          <h2>How to Use the Bot</h2>
+          <p>
+            Follow these simple steps to book a venue with our AI assistant:
+          </p>
+          <ol>
+            <li>
+              <p>
+                To begin, you can say "Hello" or select a quick option like "I
+                want to book MP-Hall".
+              </p>
+            </li>
+            <li>
+              <p>
+                The bot will ask for your booking details, including your name,
+                class, and the venue.
+              </p>
+            </li>
+            <li>
+              <p>
+                Next, provide the specific date and time for your event. The bot
+                will automatically check for availability.
+              </p>
+            </li>
+            <li>
+              <p>
+                You can also include any special requirements, such as a
+                projector or microphones.
+              </p>
+            </li>
+            <li>
+              <p>
+                Once all details are confirmed, the bot will generate a unique
+                4-digit booking code for you.
+              </p>
+            </li>
+          </ol>
+          <p>
+            This code is essential for any future changes or cancellations to
+            your booking.
+          </p>
+        </div>
+        <div
+          id="chat-container"
+          role="region"
+          aria-label="Mayoor School Booking Assistant Chatbot"
+        >
+          <div id="chat-header">Mayoor School Smart Booker</div>
+          <div id="messages" aria-live="polite" aria-relevant="additions"></div>
+
+          <div id="quick-replies" aria-label="Quick reply options">
+            <button class="quick-btn" data-msg="I want to book MP-Hall">
+              MP-Hall
+            </button>
+            <button class="quick-btn" data-msg="I want to book Amphitheatre">
+              Amphitheatre
+            </button>
+          </div>
+
+          <form id="input-area" aria-label="Send message form">
+            <input
+              type="text"
+              id="userInput"
+              placeholder="Type your message..."
+              autocomplete="off"
+              required
+            />
+            <button type="submit" title="Send">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-send"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+              >
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
 
     <script>
@@ -419,7 +605,6 @@
           handleUserMessage(e.target.getAttribute("data-msg"));
         }
       });
-
       window.onload = () => {
         addMessage(
           "Hello! I'm the Mayoor Booking Assistant. How can I help you with your booking today?",
