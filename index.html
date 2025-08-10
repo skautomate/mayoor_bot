@@ -111,6 +111,10 @@
         letter-spacing: 1.2px;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        justify-content: flex-start;
       }
 
       #messages {
@@ -371,7 +375,6 @@
         }
 
         #chat-header {
-          font-size: 1.3rem;
           padding: 14px 16px;
         }
 
@@ -399,46 +402,47 @@
           padding: 8px 14px;
           font-size: 0.9rem;
         }
-        .bot-profile {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
+      }
 
-        .bot-header-avatar {
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          object-fit: cover;
-          border: 2px solid white;
-        }
+      .bot-profile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
 
-        .bot-info {
-          display: flex;
-          flex-direction: column;
-        }
+      .bot-header-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid white;
+      }
 
-        .bot-name {
-          font-size: 1.1rem;
-          font-weight: 600;
-        }
+      .bot-info {
+        display: flex;
+        flex-direction: column;
+      }
 
-        .bot-status {
-          font-size: 0.85rem;
-          font-weight: 200;
-          color: #ffffff; /* Light green for text */
-          display: flex;
-          align-items: center;
-          gap: 6px;
-        }
+      .bot-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
 
-        .status-dot {
-          width: 8px;
-          height: 8px;
-          background-color: #4caf50; /* Green dot */
-          border-radius: 50%;
-          display: inline-block;
-        }
+      .bot-status {
+        font-size: 0.85rem;
+        font-weight: 200;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #4caf50;
+        border-radius: 50%;
+        display: inline-block;
       }
     </style>
   </head>
